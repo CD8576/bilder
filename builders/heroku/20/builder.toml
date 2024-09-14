@@ -1,0 +1,185 @@
+description = "Koyeb buildpack based on heroku buildpack"
+
+[stack]
+  id = "heroku-20"
+  build-image = "koyeb/pack:20-cnb-build"
+  run-image = "koyeb/pack:20-cnb"
+
+[lifecycle]
+  version = "0.15.3"
+
+[[buildpacks]]
+  id = "heroku/go"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.0.0&name=Heroku+Go+(Shimmed)"
+
+[[buildpacks]]
+  id = "heroku/gradle"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/gradle?version=0.0.0&name=Heroku+Gradle+(Shimmed)"
+
+[[buildpacks]]
+  id = "heroku/java"
+  uri = "docker://docker.io/heroku/buildpack-java@sha256:7215ec11a198f04da57355043ef9e61a5af699fb96c8a320e22df1832ba275b4"
+
+[[buildpacks]]
+  id = "heroku/nodejs"
+  uri = "docker://docker.io/heroku/buildpack-nodejs@sha256:ecc7167d15d443b2f8cc61350999332b78c1177cbc702d5bae646fd3736d6f72"
+
+[[buildpacks]]
+  id = "heroku/php"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/php?version=0.0.0&name=Heroku+PHP+(Shimmed)"
+
+[[buildpacks]]
+  id = "heroku/procfile"
+  uri = "docker://docker.io/heroku/procfile-cnb@sha256:2549eee29b64c5dc063a3966c65baf1f264389645f54d416a320aa9e20b09592"
+
+[[buildpacks]]
+  id = "heroku/python"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.0.0&name=Heroku+Python+(Shimmed)"
+
+[[buildpacks]]
+  id = "heroku/ruby"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/ruby?version=0.0.0&name=Heroku+Ruby+(Shimmed)"
+
+[[buildpacks]]
+  id = "heroku/scala"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/scala?version=0.0.0&name=Heroku+Scala+(Shimmed)"
+
+[[buildpacks]]
+  id = "heroku/clojure"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/clojure?version=0.0.0&name=Clojure"
+
+[[buildpacks]]
+  id = "koyeb/custom"
+  uri = "docker://koyeb/buildpack-custom"
+
+[[buildpacks]]
+  id = "koyeb/custom-nodejs"
+  uri = "docker://koyeb/buildpack-custom-nodejs"
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/ruby"
+    version = "0.0.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/python"
+    version = "0.0.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/scala"
+    version = "0.0.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/php"
+    version = "0.0.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/go"
+    version = "0.0.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "koyeb/custom-nodejs"
+    version = "0.1.0"
+    optional = true
+
+  [[order.group]]
+    id = "heroku/nodejs"
+    version = "2.6.2"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/java"
+    version = "4.0.2"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
+
+[[order]]
+
+  [[order.group]]
+    id = "heroku/clojure"
+    version = "0.0.0"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "2.0.2"
+    optional = true
+
+  [[order.group]]
+    id = "koyeb/custom"
+    version = "0.1.0"
+    optional = true
